@@ -20,6 +20,15 @@
         regexp: '^Prompt='
         line: 'Prompt=lts'
 
+
+    - name: Run do-release-upgrade non-interactively.
+      ansible.builtin.shell: do-release-upgrade -f DistUpgradeViewNonInteractive
+
+    - name: Reboot the server.
+      ansible.builtin.reboot:
+        msg: "Rebooting the server to complete the upgrade process."
+        pre_reboot_delay: 10
+
     - name: Check if reboot is required
       ansible.builtin.stat:
         path: /var/run/reboot-required
