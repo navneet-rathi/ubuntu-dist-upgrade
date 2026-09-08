@@ -3,13 +3,11 @@
   hosts: all
   become: true
   tasks:
-    - name: Update apt cache
+    - name: Update Cache and Upgrade all packages to the latest version
       ansible.builtin.apt:
-        update_cache: true
-
-    - name: Upgrade all packages to the latest version
-      ansible.builtin.apt:
+        force_apt_get: true
         upgrade: dist
+        update_cache: true
 
     - name: Install the update-manager-core package if not already installed
       ansible.builtin.apt:
