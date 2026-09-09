@@ -3,5 +3,14 @@
   hosts: all
   become: true
   gather_facts: true
+  pre_tasks:
+    - name: Install some apt dependencies
+      ansible.builtin.apt:
+        name:
+          - libauparse0t64
+          - libaudit1=1:3.1.2-2.1build1
+          - auditd
+        force_apt_get: true  
+        state: present
   roles:
     - role: ubuntu24-CIS
