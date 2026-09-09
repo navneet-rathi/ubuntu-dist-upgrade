@@ -1,0 +1,7 @@
+---
+- name: ubuntu24-CIS  | Apply CIS Benchmark for Ubuntu 24.04 LTS
+  hosts: all
+  become: true
+  gather_facts: true
+  roles:
+    - role: ubuntu24-CIS
